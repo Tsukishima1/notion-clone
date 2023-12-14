@@ -6,9 +6,9 @@ const MarketingLayout = ({
     children: React.ReactNode,
 }) => {
     return ( 
-        <div className="h-screen dark:bg-[#1F1F1F]">
+        <div className="h-screen">
             <Navbar />
-            <main className="h-full pt-40">
+            <main className="h-full pt-40 dark:bg-[#1F1F1F]">
                 {children}
             </main>
         </div>
