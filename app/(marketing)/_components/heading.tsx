@@ -40,7 +40,7 @@ export const Heading = () => {
             )}
 
             {isAuthenticated && !isLoading && (
-                <Button asChild>
+                <Button>
                     <Link href="/documents">
                         Enter Jotion
                     </Link>
