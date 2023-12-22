@@ -12,6 +12,7 @@ import { api } from "@/convex/_generated/api";
 export const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)"); // 用于判断是否是移动端
+    const documents = useQuery(api.documents.get); // 获取所有的文档
 
     const isResizingRef = useRef(false);
     const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -23,7 +24,7 @@ export const Navigation = () => {
     useEffect(()=>{
         if (isMobile) {
             collapseWidth();
-        }else {
+        }else { 
             resetWidth();
         }
     },[isMobile]);
@@ -120,7 +121,11 @@ export const Navigation = () => {
                 <UserItem/>
             </div>
             <div className="mt-4">
-                <p>Documents</p>
+                {documents?.map((document) => (
+                    <p key={document._id}>
+                        {document.title}
+                    </p>
+                ))}
             </div>
             <div
                 onMouseDown={handleMouseDown}
