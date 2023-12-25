@@ -9,9 +9,8 @@ plugins:
       ref: v1.3.0
       uri: https://github.com/trunk-io/plugins
 actions:
-  disabled:
-    - trunk-announce
-    - trunk-check-pre-push
-    - trunk-fmt-pre-commit
   enabled:
     - trunk-upgrade-available
+lint:
+  enabled:
+    - eslint@8.56.0
