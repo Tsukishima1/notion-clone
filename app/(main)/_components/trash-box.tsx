@@ -1,5 +1,6 @@
 "use client";
 
+import { ConfirmModal } from "@/components/modals/confirm-modal";
 import { Spinner } from "@/components/spinner";
 import { Input } from "@/components/ui/input";
 import { api } from "@/convex/_generated/api";
@@ -97,9 +98,11 @@ export const TrashBox = () => {
                             >
                                 <Undo className="w-4 h-4 text-muted-foreground"/>
                             </div>
+                            <ConfirmModal onConfirm={()=>onRemove(document._id)}>
                             <div role="button" className="rounded-sm p-2 hover:bg-neutral-200">
-                            <Trash className="h-4 w-4 text-muted-foreground" onClick={(e)=>{e.stopPropagation()}}/>
+                            <Trash className="h-4 w-4 text-muted-foreground"/>
                             </div>
+                            </ConfirmModal>
                         </div>
                     </div>
                 ))}
