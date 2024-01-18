@@ -17,8 +17,10 @@ import { create } from '../../../convex/documents';
 import { toast } from "sonner";
 import { DocumentList } from "./documentlist";
 import { TrashBox } from "./trash-box";
+import { useSearch } from "@/hooks/use-search";
 
 export const Navigation = () => {
+    const search = useSearch();
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)"); // 用于判断是否是移动端
     const create = useMutation(api.documents.create)
@@ -36,7 +38,7 @@ export const Navigation = () => {
         }else { 
             resetWidth();
         }
-    },[isMobile]);
+    }, [isMobile]);
 
     useEffect(() => {
       if (isMobile) {
@@ -143,7 +145,7 @@ export const Navigation = () => {
                     label="Search"
                     icon={Search}
                     isSearch
-                    onClick={() => {}}
+                    onClick={search.onOpen}
                 />
                 <Item 
                     label="Settings"
