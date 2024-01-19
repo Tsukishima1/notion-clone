@@ -18,9 +18,11 @@ import { toast } from "sonner";
 import { DocumentList } from "./documentlist";
 import { TrashBox } from "./trash-box";
 import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
 
 export const Navigation = () => {
     const search = useSearch();
+    const settings = useSettings();
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)"); // 用于判断是否是移动端
     const create = useMutation(api.documents.create)
@@ -150,7 +152,7 @@ export const Navigation = () => {
                 <Item 
                     label="Settings"
                     icon={Settings}
-                    onClick={() => {}}
+                    onClick={settings.onOpen}
                 />
                 <Item 
                     onClick={handleCreate} 
