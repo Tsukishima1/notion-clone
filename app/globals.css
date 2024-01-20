@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+  overflow: hidden;
+}
  
 @layer base {
   :root {
@@ -69,22 +76,8 @@
 @layer base {
   * {
     @apply border-border;
-    margin: 0;
-    padding: 0;
   }
   body {
     @apply bg-background text-foreground;
-    font-weight: 500;
   }
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
 }
