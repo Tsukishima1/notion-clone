@@ -3,6 +3,7 @@
 import { Doc } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 import { IconPicker } from "@/components/icon-picker";
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,7 @@ export const Toolbar = ({
     const [isEditing,setEditing] = useState(false);
     const [value, setValue] = useState(initialData.title);
 
+    const coverImage = useCoverImage();
     const update = useMutation(api.documents.update);
     const removeIcon = useMutation(api.documents.removeIcon);
 
@@ -109,7 +111,7 @@ export const Toolbar = ({
                 )}
                 { !initialData.coverImage && !preview && (
                     <Button
-                        onClick={()=>{} }
+                        onClick={coverImage.onOpen}
                         className="text-muted-foreground text-xs"
                         variant="outline"
                         size="sm"
