@@ -133,7 +133,7 @@ export const Toolbar = ({
             ) : (
                 <div
                     onClick={enableInput}
-                    className="pb-[11.5px] text-5xl font-bold break-words outline-none"
+                    className="pb-[11.5px] text-5xl font-bold break-words outline-none dark:text-gray-300"
                 >
                     {initialData.title}
                 </div>

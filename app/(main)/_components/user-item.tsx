@@ -12,7 +12,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
     DropdownMenuContent,
-    DropdownMenuLabel,
     DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 
@@ -27,7 +26,7 @@ export const UserItem = () => {
                         <Avatar className="h-5 w-5">
                             <AvatarImage src={user?.imageUrl} />
                         </Avatar>
-                        <span className="text-start font-medium line-clamp-1">
+                        <span className="text-start font-medium line-clamp-1 dark:text-gray-300">
                             {user?.fullName}&apos;s Jotion
                         </span>
                     </div>

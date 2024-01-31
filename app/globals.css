@@ -81,3 +81,7 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  font-family: var(--mantine-font-family) !important;
+}
