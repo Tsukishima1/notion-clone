@@ -48,7 +48,10 @@ export const Item = ({
     )=>{
         event.stopPropagation();
         if (!id) return;
-        const promise = archive({id});
+        const promise = archive({id})
+            .then(()=> {
+                router.push(`/documents`);
+            })
 
         toast.promise(promise, {
             loading: "Moving to trash...",
@@ -68,6 +71,7 @@ export const Item = ({
         const promise = create({ title: "Untitled", parentDocument: id })
         .then((documentId)=>{
             if(!expanded) onExpand?.();
+            router.push(`/documents/${documentId}`);
         })
 
         toast.promise(promise, {

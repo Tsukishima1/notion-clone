@@ -1,13 +1,14 @@
 "use client";
 
 import { useMutation, useQuery } from "convex/react";
+import dynamic from "next/dynamic"; // 这个库用于动态加载组件
+import { useMemo } from "react"; // 这个库用于缓存数据
 
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { Toolbar } from "@/app/(main)/_components/toolbar";
 import { Cover } from "@/components/cover";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Editor } from "@/components/editor";
 
 interface DocumentIdPageProps {
     params: {
@@ -18,6 +19,11 @@ interface DocumentIdPageProps {
 const DocumentIdPage = ({
     params
 }:DocumentIdPageProps) => {
+    const Editor = useMemo(() => dynamic(
+        () => import("@/components/editor"),
+        { ssr: false }
+    ), []);
+
     const document = useQuery(api.documents.getById, {
         documentId: params.documentId
     });

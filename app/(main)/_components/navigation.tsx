@@ -6,7 +6,7 @@ import {
     Popover,PopoverTrigger,PopoverContent
 }from "@/components/ui/popover";
 
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./user-item";
@@ -22,6 +22,7 @@ import { useSettings } from "@/hooks/use-settings";
 import { Navbar } from "./navbar";
 
 export const Navigation = () => {
+    const router = useRouter();
     const search = useSearch();
     const settings = useSettings();
     const params = useParams();
@@ -114,7 +115,10 @@ export const Navigation = () => {
     }
     // 创建文章
     const handleCreate = () => {
-        const promise = create({ title: "Untitled" });
+        const promise = create({ title: "Untitled" })
+            .then((documentId) => {
+                router.push(`/documents/${documentId}`);
+            })
         // 通过 toast.promise 来显示 loading 和 success 或者 error
 
         toast.promise(promise, {
